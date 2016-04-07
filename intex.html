@@ -1,0 +1,97 @@
+<?php
+function getColumnas() {
+    $columnas = array("name", "rating", "yearRealease", "imdb");
+    $result = array();
+
+    foreach ($columnas as $columna) {
+        $titulo = $columna;
+        $orden = getOrdenSiguiente($columna);
+        $ordenUrl = "./?col=" . $columna . "&ord=" . $orden;
+        array_push($result, crearColumna($titulo, $ordenUrl));
+    }
+    return $result;
+}
+?>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    
+ 
+  <!--START NAV-->
+   <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">My Movies</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      </ul>
+    </div>
+  </nav>
+<!--FINISH NAV-->
+
+ <!--START CONTAINER-->
+     
+      <div class="container">
+              <div class="row">
+            <div class="col s6">
+                <ul class="collection">
+                        <li class="collection-item avatar" id="starWars">
+                            <img class="circle" alt="" src="avatar/starwars.jpg"/>
+                            <span class="title"><b>Star Wars Episode VII</b></span>
+                            <p>Rating: 8.2<br> Release Year: 2016</br></p>
+                            <div class="secondary-content">
+                             
+                                    <a href="http://www.imdb.com/title/tt2488496/?ref_=nv_sr_1" >
+                                    <i class="material-icons">call_made
+                                    </i>
+                                        
+                                    </a>
+                                    <a href="/done" >
+                                    <i class="material-icons">done
+                                    </i>
+                                        
+                                    </a>
+                            </div>
+                        </li>
+                          <li class="collection-item avatar" id="starWars">
+                            <img class="circle" alt="" src="avatar/starwars.jpg"/>
+                            <span class="title"><b>Star Wars Episode VII</b></span>
+                            <p>Rating: 8.2<br> Release Year: 2016</br></p>
+                            <div class="secondary-content">
+                             
+                                    <a href="http://www.imdb.com/title/tt2488496/?ref_=nv_sr_1" >
+                                    <i class="material-icons">call_made
+                                    </i>
+                                        
+                                    </a>
+                                    <a href="/done" >
+                                    <i class="material-icons">done
+                                    </i>
+                                        
+                                    </a>
+                            </div>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+          
+      </div>
+    
+ <!--FINISH NAV-->
+
+
+
+
+  </body>
+   </html>
