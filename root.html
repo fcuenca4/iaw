@@ -1,0 +1,87 @@
+
+
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script type="text/javascript" src="js/seen.js"></script>
+
+    
+ 
+  <!--START NAV-->
+   <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">My Movies</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      </ul>
+    </div>
+  </nav>
+<!--FINISH NAV-->
+
+ <!--START CONTAINER-->
+     
+      <div class="container">
+              <div class="row"
+            <div class="col s6">
+                <ul class="collection">
+                  <?php foreach (getMovies(1) as $movie) { ?>
+                  <?php if($movie['seen']=1)?>
+                   <li class="collection-item avatar" style="background-color: yellow">
+                       
+                            <img class="circle" alt="" src="<?php echo $movie['avatar']  ?>"/>
+                            <span class="title"><b><?php echo $movie['name']  ?></b></span>
+                            <p>Rating: <?php echo $movie['seen']  ?><br> <?php echo $movie['year']  ?></br></p>
+                            <div class="secondary-content">
+                             
+                                    <a href="<?php echo $movie['link']  ?>" >
+                                    <i class="material-icons">call_made
+                                    </i>
+                                    </a>
+                                   
+                                   <?php 
+                                        switch($movie['seen']){
+                                   case 0:?>
+                                            <a class="change-color" onclick="changeYellow(this)" >
+                                            <i class="material-icons">done
+                                            </i>
+                                            </a>
+                                            <?php break;
+                                   case 1:?>
+                                            <a class="change-color" onclick="changeWhite(this)" >
+                                            <i class="material-icons">done
+                                            </i>
+                                            </a>
+                                            <?php break;
+                                  }?>
+         
+                                   
+                                         
+                            </div>
+                        </li>
+                         <?php } ?>
+                       
+                    
+                </ul>
+            </div>
+        </div>
+          
+      </div>
+    
+ <!--FINISH NAV-->
+
+
+
+
+  </body>
+   </html>
