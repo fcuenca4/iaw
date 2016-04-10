@@ -19,19 +19,37 @@ class DB {
     function obtenerMovies($id_list){
         $columna = getColumna();
         return $this->db->query("SELECT *	
-                                    FROM movies m
-                                        INNER JOIN relacion_movie_list rml  ON (m.id=rml.id_movie)
-                                    WHERE rml.id_list='$id_list' ORDER BY ".$columna." ".getOrder($columna))->fetchAll();
+                                    FROM movies m INNER JOIN relacion_movie_list rml  
+                                                 ON (m.id=rml.id_movie)
+                                                    WHERE rml.id_list='$id_list' 
+                                                        ORDER BY ".$columna." ".getOrder($columna))->fetchAll();
     }
     
     function obtenerLists(){
         $columna = getColumna();
         return $this->db->query("SELECT * FROM lists ORDER BY".$columna." ".getOrder($columna))->fetchAll();
     }
+    function getVisto($idMovie,$idList){
+        
+               return $this->db->query("SELECT seen FROM relacion_movie_list 
+                                            WHERE (relacion_movie_list.id_movie = '$idMovie' and
+                                                 relacion_movie_list.id_list=$idList)"
+                                                )->fetchAll(); 
+
+    }
+    function setVisto($idMovie,$idList, $seen){
+    
+        return $this->db->exec("UPDATE relacion_movie_list  
+                                      SET seen='$seen' 
+                                            WHERE 
+                                            ( relacion_movie_list.id_movie = '$idMovie' and
+                                                 relacion_movie_list.id_list=$idList )"
+                                                 );
+    }
     
     function agregarMovie($name, $director, $rating, $seen, $link, $year) {
-        return $this->db->exec("INSERT INTO movies VALUES ( null,'$name','$director','$rating','$seen','$link','$year);");
-              
+       return $this->db->exec("UPDATE relacion_movie_list SET  (null,'$id_movie','$id_list')"); 
+           
     }
     
     function agregarList($name){
