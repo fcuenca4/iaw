@@ -7,7 +7,7 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-
+    <title> Movie List</title>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -30,132 +30,70 @@
     </nav>
     <!--FINISH NAV-->
 
-    <!--START CONTAINER-->
 
+
+
+
+
+
+
+
+
+    <!--START CONTAINER-->
     <div class="container">
-        
         <div class="row" <div class="col s6">
             <ul class="collection">
-                <?php foreach (getMovies($id_list=1) as $movie) { 
-                        
-                       if($movie["seen"] == 1) {?>
-                <li class="collection-item avatar" style="background-color: yellow"> 
-                        <?php 
-                        } else { 
-                        ?>
-                        <li class="collection-item avatar" style="background-color: white">
-                           <?php }?>
-
-                    <img class="circle" alt="" src="<?php echo $movie['avatar']  ?>" />
-                    <span class="title"><b><?php echo $movie['name']  ?></b></span>
-                    <p>Rating:
-                        <?php echo $movie['rating']  ?><br> Year:
-                        <?php echo $movie['year']  ?>
-                        </br>
-                    </p>
-                    <div class="secondary-content">
-                        <a href="<?php echo $movie['link']  ?>">
-                            <i class="material-icons">call_made </i>
-                        </a>
-                        <?php 
-                                        switch($movie['seen']){
-                                   case 0:?> 
-                        <a class="change-color" onclick="setSeen(this,<?php echo $id_list ?>,<?php echo $movie["id"] ?>, 1)">
-                            <i class="material-icons">done  </i>
-                        </a>
-                        <?php break;
+               <?php foreach (getMovies($id_list=1) as $movie) { 
+                  if($movie["seen"] == 1) {?>
+                    <li class="collection-item avatar" style="background-color: yellow"> <?php }
+                  else {  ?>
+                    <li class="collection-item avatar" style="background-color: white">  <?php }?>
+                         <img class="circle" alt="" src="<?php echo $movie['avatar']  ?>" />
+                         <span class="title"><b><?php echo $movie['name']  ?></b></span>
+                          <p>
+                              Rating:<?php echo $movie['rating']  ?><br> Year:<?php echo $movie['year']  ?></br>
+                          </p>
+                            <div class="secondary-content">
+                               <a href="<?php echo $movie['link']  ?>"><i class="material-icons">call_made </i></a>
+                            <?php switch($movie['seen']){                                        
+                                   case 0:?>
+                            <a class="change-color" onclick="setSeen(this,<?php echo $id_list ?>,<?php echo $movie[" id "] ?>, 1)">
+                                <i class="material-icons">done </i>
+                            </a>
+                            <?php break;
                                    case 1:?>
-                        <a class="change-color" onclick="setSeen(this,<?php echo $id_list ?>,<?php echo $movie["id"] ?>, 0)">
-                            <i class="material-icons">done
-                                            </i>
-                        </a>
-                        <?php break;
+                            <a class="change-color" onclick="setSeen(this,<?php echo $id_list ?>,<?php echo $movie[" id "] ?>, 0)">
+                                <i class="material-icons">done</i>                                           
+                            </a>
+                            <?php break;
                                   }?>
-
-
-
-                    </div>
-                </li>
-                <?php } ?>
-
+                        </div>
+                    </li>
+                    <?php } ?>
 
             </ul>
         </div>
-		
-		<div class="row">
-            <div class="section">
-                <div class="col right">
-                    <a class='dropdown-button btn' href='#' data-activates='ordenar'>Ordenar</a>
-
-                    <ul id='ordenar' class='dropdown-content'>
-                        <?php foreach (getColumnas() as $columna) { ?>
-                            <li>
-                                <?php if ($columna!=null) { ?>
-                                    <a href=<?php echo $columna['OrdenUrl']; ?>>
-                                        <?php echo $columna['nombre']; ?>
-                                    </a>
-                                <?php } ?>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-            </div>
-        </div>
-		
-		 <div id="modal" class="modal">
-            <form action='./agregarPelicula.php' method='post' class="col s8 offset-s2">
-                <div class="modal-content">
-                    <div class="row">
-                        <div class="input-field col s6">
-                          <input id="name" name="name" type="text" value="name" class="validate">
-                          <label for="name">Nombre</label>
-                        </div>
-                        <div class="input-field col s6">
-                          <input id="director" name="director" type="text" value="director" class="validate">
-                          <label for="director">Director</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                          <input type='text' id='rating' name="rating" value="0.0" class="validate" />
-                          <label for="rating">Rating</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                          <input type='text' id='seen' name='seen' value="0" class="validate" />
-                          <label for="seen">Seen</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                          <input type='text' id='link' name='link' value="link" class="validate" />
-                          <label for="link">Link</label>
-                        </div>
-                    </div>
-					<div class="row">
-                        <div class="input-field col s12">
-                          <input type='text' id='year' name='year' value="1950" class="validate" />
-                          <label for="year">Year</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Guardar
-                        <i class="mdi-content-send right"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-		
     </div>
 
-    
+    <div class="row">
+        <div class="section">
+            <div class="col right">
+                <a class="dropdown-button btn"" href='#' data-activates='ordenar'>Ordenar</a>
 
-    <!--FINISH NAV-->
-
-
-	
+                <ul id="ordenar" class="dropdown-content">
+                    <?php foreach (getColumnas() as $columna) { ?>
+                    <li>
+                        <?php if ($columna!=null) { ?>
+                        <a href=<?php echo $columna[ 'OrdenUrl']; ?>>
+                                        <?php echo $columna['nombre']; ?>
+                                    </a>
+                        <?php } ?>
+                    </li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 </body>
 
