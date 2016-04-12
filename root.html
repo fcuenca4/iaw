@@ -17,6 +17,8 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/seen.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+
 
 
 
@@ -29,7 +31,59 @@
         </div>
     </nav>
     <!--FINISH NAV-->
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+            <a class="btn-floating btn-large waves-effect waves-light red btn modal-trigger" href="#modal"><i class="mdi-content-add"></i></a>
+        </div>
 
+        <!-- Modal Structure -->
+        <div id="modal" class="modal">
+            <form action='./agregarPelicula.php' method='post' class="col s8 offset-s2">
+                <div class="modal-content">
+                <input type='hidden' id='idList' name='idList' value="1"  />
+
+                    <div class="row">
+                        
+                        <div class="input-field col s6">
+                          <input id="name" name="name" type="text" value="name" class="validate">
+                          <label for="name">Nombre</label>
+                        </div>
+                        <div class="input-field col s6">
+                          <input id="director" name="director" type="text" value="director" class="validate">
+                          <label for="director">Director</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input type='text' id='rating' name="rating" value="0.0" class="validate" />
+                          <label for="rating">Rating</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input type='text' id='seen' name='seen' value="0" class="validate" />
+                          <label for="seen">Seen</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input type='text' id='link' name='link' value="link" class="validate" />
+                          <label for="link">Link</label>
+                        </div>
+                    </div>
+					<div class="row">
+                        <div class="input-field col s12">
+                          <input type='text' id='year' name='year' value="1950" class="validate" />
+                          <label for="year">Year</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Guardar
+                        <i class="mdi-content-send right"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
 
 
 
@@ -96,5 +150,6 @@
     </div>
 
 </body>
+
 
 </html>

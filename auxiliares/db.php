@@ -47,9 +47,14 @@ class DB {
                                                  );
     }
     
-    function agregarMovie($name, $director, $rating, $seen, $link, $year) {
-		$this->db->exec("INSERT INTO movies VALUES ('$name', '$director', '$rating', '$seen', '$link', '$year')");
-        return $this->db->exec("UPDATE relacion_movie_list SET  (null,'$id_movie','$id_list')"); 
+    function agregarMovie($id_list,$name, $director, $rating, $link, $year) {
+        return 1;
+		/*$this->db->exec("INSERT INTO movies 
+                            VALUES ('$name', '$director', '$rating', '$link', '$year')"
+                        );
+        return $this->db->exec("UPDATE relacion_movie_list
+                                     SET  ('$id_movie','$id_list'),'$seen' "
+                              ); */
            
     }
     
