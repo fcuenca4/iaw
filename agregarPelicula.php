@@ -12,12 +12,13 @@ if (isset($_POST['name'])) {
     $idList= $_POST['idList'];
     $db = new DB();
     $db->agregarMovie($idList,$name, $director, $rating, $link,$year);
+    
 }
 else {
-        echo 'agregar_error';}
-
-    header("Location: ./");
-    die();
+        echo 'agregar_error';
+     }
+     header("Location: ./");
+     die();
 
 
 ?> 

@@ -20,7 +20,9 @@ function crearColumna($nombre, $ordenUrl) {
     return array('nombre' => $nombre, 'OrdenUrl' => $ordenUrl);
 }
 
-
+function getListbyURL(){
+    return 1; //TO IMPLEMENT
+}
 
 function getMovies($id_list) {
     $db = new DB();

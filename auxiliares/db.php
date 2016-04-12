@@ -48,7 +48,7 @@ class DB {
     }
     
     function agregarMovie($id_list,$name, $director, $rating, $link, $year) {
-        return 1;
+        return $id_list;
 		/*$this->db->exec("INSERT INTO movies 
                             VALUES ('$name', '$director', '$rating', '$link', '$year')"
                         );
