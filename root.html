@@ -20,6 +20,7 @@
     <script type="text/javascript" src="js/app.js"></script>
 
     <?php 
+        //$_SESSION['idList'];
         $id_list =getListbyURL();
     ?>
     
@@ -43,7 +44,7 @@
     <div id="modal" class="modal">
         <form action='./agregarPelicula.php' method='post' class="col s8 offset-s2">
             <div class="modal-content">
-                <input type='hidden' id='idList' name='id_lista' value="<?php $idList ?>" />
+                <input type='hidden' id='idList' name='id_lista' value="<?php echo $id_list; ?>" />
                 <div class="row">
                     <div class="input-field col s6">
                         <input id="name" name="name" type="text" value="name" class="validate">
@@ -96,7 +97,7 @@
                 <?php foreach (getMovies($id_list) as $movie) { 
                         
                        if($movie["seen"] == 1) {?>
-                <li class="collection-item avatar" style="background-color: yellow"> 
+                    <li class="collection-item avatar" style="background-color: yellow"> 
                         <?php 
                         } else { 
                         ?>
@@ -108,14 +109,14 @@
                     <p>Rating:
                         <?php echo $movie['rating']  ?><br> Year:
                         <?php echo $movie['year']  ?>
-                        </br>
+                    </br>
                     </p>
                     <div class="secondary-content">
                         <a href="<?php echo $movie['link']  ?>">
                             <i class="material-icons">call_made </i>
                         </a>
                         <?php 
-                                        switch($movie['seen']){
+                                   switch($movie['seen']){
                                    case 0:?> 
                         <a class="change-color" onclick="setSeen(this,<?php echo $id_list ?>,<?php echo $movie["id"] ?>, 1)">
                             <i class="material-icons">done  </i>
