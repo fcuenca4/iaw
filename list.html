@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <title> Movie List</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+<!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/seen.js"></script>
+	<script type="text/javascript" src="js/borrar.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+	 <!--START NAV-->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo right">My Movies</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            </ul>
+        </div>
+    </nav>
+	<!--FINISH NAV-->
+	
+	 <!-- Modal Trigger -->
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large waves-effect waves-light red btn modal-trigger" href="#modal"><i class="mdi-content-add"></i></a>
+    </div>
+	
+	<!-- Modal Structure -->
+	<div id="modal" class="modal">
+        <form action='./agregarLista.php' method='post' class="col s8 offset-s2">
+            <div class="modal-content">
+                
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="owner" name="owner" type="text" value="owner" class="validate">
+                        <label for="owner">Nombre</label>
+                    </div>
+				</div>
+			</div>
+            <div class="modal-footer">
+                <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Guardar
+                    <i class="mdi-content-send right"></i>
+                </button>
+            </div>
+        </form>
+	</div>
+	 <!-- Modal END -->
+	 
+	 <!--START CONTAINER-->
+   <div class="container">
+        
+        <div class="row" <div class="col s6">
+            <ul class="collection">
+                <?php foreach (getLists() as $list) { ?>
+					<span class="title"><br><?php echo $list['owner']  ?></br></span>
+					<a href="#!" class="secondary-content"><i class="material-icons">send</i></a>
+				
+				 <?php } ?>
+			 </ul>
+        </div>
+	</div>
+	
+	<!--START ORDENAR-->
+   <div class="row">
+            <div class="section">
+                <div class="col right">
+                    <a class='dropdown-button btn' href='#' data-activates='ordenar'>Ordenar</a>
+
+                    <ul id='ordenar' class='dropdown-content'>
+                        <?php foreach (getColumnas() as $columna) { ?>
+                            <li>
+                                <?php if ($columna!=null) { ?>
+                                    <a href=<?php echo $columna['OrdenUrl']; ?>>
+                                        <?php echo $columna['owner']; ?> 
+                                    </a>
+                                <?php } ?>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <!-- ORDENAR END-->
+
+	<!--FOOTER -->
+	<footer class="page-footer">           
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Comisión: Cuenca - Garat
+            <a class="grey-text text-lighten-4 right" href="#!">Ingeniería de Aplicaciones Web</a>
+            </div>
+          </div>
+        </footer>
+</body>
+</html>

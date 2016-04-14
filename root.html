@@ -17,6 +17,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/seen.js"></script>
+	<script type="text/javascript" src="js/borrar.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
 
     <?php 
@@ -97,7 +98,7 @@
                 <?php foreach (getMovies($id_list) as $movie) { 
                         
                        if($movie["seen"] == 1) {?>
-                    <li class="collection-item avatar" style="background-color: yellow"> 
+                    <li class="collection-item avatar" style="background-color: yellow" id= "<?php echo $movie['id']  ?>" > 
                         <?php 
                         } else { 
                         ?>
@@ -129,8 +130,15 @@
                         </a>
                         <?php break;
                                   }?>
-
-
+  
+                       <!-- BORRAR PELICULA -->
+                        <a onclick="borrarPelicula('<?php echo $movie['deleteUrl']; ?>')" class='click'>
+                                        <i class="mdi-action-delete"></i>
+                        
+                      <!-- EDITAR PELICULA -->
+						<a onclick="modificarPelicula(<?php echo $movie["id"]; ?>, <?php echo $id_list; ?>)" class='click'>
+                            <i class="mdi-action-edit"></i>
+                        </a>
 
                     </div>
                 </li>
@@ -139,6 +147,8 @@
 
             </ul>
         </div>
+             
+         
     </div>
     <!--CONTAINER END-->
 
@@ -164,6 +174,16 @@
             </div>
         </div>
          <!-- ORDENAR END-->
+         
+    <!--FOOTER -->
+	<footer class="page-footer">           
+          <div class="footer-copyright">
+            <div class="container">
+             2016 Comision: Cuenca - Garat
+            <a class="grey-text text-lighten-4 right" href="#!">Ingenier�a de Aplicaciones Web</a>
+            </div>
+          </div>
+    </footer>   
 
 
 

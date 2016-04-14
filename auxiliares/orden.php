@@ -3,7 +3,10 @@
     function getColumna(){
         return isset($_GET['col']) ? $_GET['col'] : "name";
     }
-    
+    function getColumna2(){
+        return isset($_GET['col']) ? $_GET['col'] : "owner";
+    }
+	
     function getOrden(){
         return isset($_GET['ord']) ? $_GET['ord'] :"asc";
     }

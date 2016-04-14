@@ -2,6 +2,7 @@
 include_once './auxiliares/db.php';
 include_once './auxiliares/orden.php';
 
+
 function getColumnas() {
     $columnas = array("id", "name", "director", "rating", "link", "year");
     $result = array();
@@ -36,10 +37,35 @@ function getMovies($id_list) {
     foreach($movies as $movie) {
         $file = "avatar/".$movie[0].".jpg";
         $aux = $db->getVisto($movie[0], $id_list)[0]["seen"]; //1 si la pelicula del usuario fue vista, 0 caso contrario
-        if (!file_exists($file)) $file = '/avatar/no.jpg';
-        array_push($result, array('id' => $movie[0], 'name' => $movie[1], 'director' => $movie[2], 'rating' => $movie[3], 'link' => $movie[4], 'seen' => $aux, 'year' => $movie[5], 'avatar' => $file));
+        if (!file_exists($file)) 
+			$file = './avatar/no.jpg';
+        $deleteUrl = './borrarPelicula.php?idMovie='.$movie[0] .'?idList='.$id_list; //ACA HAY ALGO MAL
+		array_push($result, 
+        array('id' => $movie[0], 
+		'name' => $movie[1], 
+		'director' => $movie[2], 
+		'rating' => $movie[3], 
+		'link' => $movie[4], 
+		'seen' => $aux, 
+		'year' => $movie[5], 
+		'avatar' => $file,
+        'deleteUrl' => $deleteUrl,
+		));
     }
     return $result;
 }
+function getLists(){
+	$db = new DB();
+    $lists = $db->obtenerLists();
+	$result = array();
+    $aux = array();
+	 foreach($lists as $list) {
+		array_push($result, array('id' => $list[0], 
+			'owner' => $list[1]));
+	 }
+	 return $result;
+}
+
 include './root.html';
+//include './list.html';
 ?>
