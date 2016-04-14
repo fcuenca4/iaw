@@ -93,14 +93,16 @@
    <div class="container">
         
         <div class="row" <div class="col s6">
-            <ul class="collection">
+            
                 <?php foreach (getMovies($id_list) as $movie) { 
                         
                        if($movie["seen"] == 1) {?>
+                    <ul class="collection">   
                     <li class="collection-item avatar" style="background-color: yellow" id= "<?php echo $movie['id']  ?>" > 
                         <?php 
                         } else { 
                         ?>
+                        <ul class="collection">
                         <li class="collection-item avatar" style="background-color: white"id= "<?php echo $movie['id']  ?>">
                            <?php }?>
 
