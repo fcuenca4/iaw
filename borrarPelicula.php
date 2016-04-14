@@ -17,3 +17,4 @@ echo "<resultado>";
 echo " <id>". $id_movie."</id>";
 echo " <eliminado>".$resultado."</eliminado>";
 echo "</resultado>";
+?>

@@ -16,7 +16,7 @@ if (isset($_POST['name'])) {
 else {
         echo 'agregar_error';
      }
-     header("Location: ./");
+     header("Location: ./index.php?list=$id_lista");
      die();
 
 

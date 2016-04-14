@@ -22,12 +22,21 @@ function crearColumna($nombre, $ordenUrl) {
 }
 
 function getListbyURL() {
-    return 1; //TO IMPLEMENT
+    $db = new DB();
+    if (isset($_GET['list'])) {
+        $id_lista = $_GET['list'];
+        $resultado = $db->existeLista($id_lista);
+        if ($resultado) {
+            return $id_lista;
+        } else {
+            $resultado = $db->agregarList();
+            return $resultado;
+        }
+
+    } else {
+        return $db->agregarList();
+    }
 }
-
-
-
-
 
 function getMovies($id_list) {
     $db = new DB();
@@ -37,33 +46,23 @@ function getMovies($id_list) {
     foreach($movies as $movie) {
         $file = "avatar/".$movie[0].".jpg";
         $aux = $db->getVisto($movie[0], $id_list)[0]["seen"]; //1 si la pelicula del usuario fue vista, 0 caso contrario
-        if (!file_exists($file)) 
-			$file = './avatar/no.jpg';
- $deleteUrl = './borrarPelicula.php?idMovie='.$movie[0] .'&idList='.$id_list;
- 		array_push($result, 
-        array('id' => $movie[0], 
-		'name' => $movie[1], 
-		'director' => $movie[2], 
-		'rating' => $movie[3], 
-		'link' => $movie[4], 
-		'seen' => $aux, 
-		'year' => $movie[5], 
-		'avatar' => $file,
-        'deleteUrl' => $deleteUrl,
-		));
+        if (!file_exists($file)) $file = './avatar/no.jpg';
+        $deleteUrl = './borrarPelicula.php?idMovie='.$movie[0].'&idList='.$id_list;
+        array_push($result,
+        array('id' => $movie[0], 'name' => $movie[1], 'director' => $movie[2], 'rating' => $movie[3], 'link' => $movie[4], 'seen' => $aux, 'year' => $movie[5], 'avatar' => $file, 'deleteUrl' => $deleteUrl, ));
     }
     return $result;
 }
-function getLists(){
-	$db = new DB();
+
+function getLists() {
+    $db = new DB();
     $lists = $db->obtenerLists();
-	$result = array();
+    $result = array();
     $aux = array();
-	 foreach($lists as $list) {
-		array_push($result, array('id' => $list[0], 
-			'owner' => $list[1]));
-	 }
-	 return $result;
+    foreach($lists as $list) {
+        array_push($result, array('id' => $list[0], 'owner' => $list[1]));
+    }
+    return $result;
 }
 
 include './root.html';
