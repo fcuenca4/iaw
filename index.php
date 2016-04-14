@@ -39,8 +39,8 @@ function getMovies($id_list) {
         $aux = $db->getVisto($movie[0], $id_list)[0]["seen"]; //1 si la pelicula del usuario fue vista, 0 caso contrario
         if (!file_exists($file)) 
 			$file = './avatar/no.jpg';
-        $deleteUrl = './borrarPelicula.php?idMovie='.$movie[0] .'?idList='.$id_list; //ACA HAY ALGO MAL
-		array_push($result, 
+ $deleteUrl = './borrarPelicula.php?idMovie='.$movie[0] .'&idList='.$id_list;
+ 		array_push($result, 
         array('id' => $movie[0], 
 		'name' => $movie[1], 
 		'director' => $movie[2], 
@@ -67,5 +67,4 @@ function getLists(){
 }
 
 include './root.html';
-//include './list.html';
 ?>

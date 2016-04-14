@@ -13,9 +13,11 @@ function borrarCollection(url) {
 
 function actualizarListado(responseXML) {
     if ($("eliminado", responseXML).text() === "1") {
-        $("#"+($("id", responseXML).text())).remove();
+        $("#"+(
+            $("id", responseXML).text())
+            ).remove();        
     } else {
-        window.alert("Error: no se pudo eliminar a " + mail);
+        window.alert("Error: no se pudo eliminar a ");
     }
 }
 

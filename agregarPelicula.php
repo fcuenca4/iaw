@@ -1,6 +1,4 @@
 <?php
-
-
 include_once './auxiliares/db.php';
 
 if (isset($_POST['name'])) {

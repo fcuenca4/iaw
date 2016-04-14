@@ -17,7 +17,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/seen.js"></script>
-	<script type="text/javascript" src="js/borrar.js"></script>
+	<!--<script type="text/javascript" src="js/borrar.js"></script>-->
     <script type="text/javascript" src="js/app.js"></script>
 
     <?php 
@@ -102,7 +102,7 @@
                         <?php 
                         } else { 
                         ?>
-                        <li class="collection-item avatar" style="background-color: white">
+                        <li class="collection-item avatar" style="background-color: white"id= "<?php echo $movie['id']  ?>">
                            <?php }?>
 
                     <img class="circle" alt="" src="<?php echo $movie['avatar']  ?>" />
@@ -132,8 +132,9 @@
                                   }?>
   
                        <!-- BORRAR PELICULA -->
-                        <a onclick="borrarPelicula('<?php echo $movie['deleteUrl']; ?>')" class='click'>
+                        <a onclick="borrarCollection('<?php echo $movie['deleteUrl']; ?>')" class='click'>
                                         <i class="mdi-action-delete"></i>
+                                    </a>
                         
                       <!-- EDITAR PELICULA -->
 						<a onclick="modificarPelicula(<?php echo $movie["id"]; ?>, <?php echo $id_list; ?>)" class='click'>
