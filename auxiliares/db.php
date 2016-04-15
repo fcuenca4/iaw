@@ -93,9 +93,8 @@ class DB {
     function existeLista($id_list) {
         return $this->db->query("SELECT COUNT(*) FROM list WHERE list.id='$id_list' LIMIT 1;")->fetchColumn();
       
-
-
     }
+ 
 
 
 

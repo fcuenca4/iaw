@@ -10,7 +10,8 @@ function getColumnas() {
     foreach($columnas as $columna) {
         $mov = $columna;
         $orden = getOrden($columna);
-        $ordenUrl = "./?col=".$columna."&ord=".$orden;
+        $list_id=$_GET['list'];
+        $ordenUrl = "./?list=".$list_id."&col=".$columna."&ord=".$orden;
         array_push($result, crearColumna($mov, $ordenUrl));
 
     }
@@ -37,6 +38,7 @@ function getListbyURL() {
         return $db->agregarList();
     }
 }
+
 
 function getMovies($id_list) {
     $db = new DB();

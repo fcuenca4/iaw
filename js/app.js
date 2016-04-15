@@ -19,5 +19,7 @@ function actualizarListado(responseXML) {
     } else {
         window.alert("Error: no se pudo eliminar a ");
     }
+    
+
 }
 
