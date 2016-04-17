@@ -1,0 +1,28 @@
+
+
+<li >
+    <div class="card-content">
+		
+        <form action="action_editar.php" method="POST" class="col s8 offset-s2">
+            <input type='hidden' id='id_list' name='id_list' value="<?php echo $mov['id_list']; ?>" />
+            <input type='hidden' id='id_movie' name='id_movie' value="<?php echo $mov['0']; ?>" />
+            Nombre:<br>
+            <input type="text" name="name" value="<?php echo  $mov['name'] ?>">
+            <br>
+            Director:<br>
+            <input type="text" name="director" value="<?php echo  $mov['director'] ?>">
+            <br><br>
+			Year:<br>
+            <input type="text" name="year" value="<?php echo  $mov['year'] ?>">
+            <br><br>
+            <input type="text" name="director" value="<?php echo  $mov['director'] ?>">
+            <br><br>
+			Year:<br>
+            <input type="text" name="rating" value="<?php echo  $mov['rating'] ?>">
+            <br><br>
+
+            <input type="submit" value="Guardar">
+            <input type="submit" value="Cancelar"><a href="./index.php?list=$id_lista"> </a></input>
+        </form> 
+	</div>
+</li>

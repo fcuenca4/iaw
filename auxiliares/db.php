@@ -18,7 +18,7 @@ class DB {
 
     function obtenerMovies($id_list) {
         $columna = getColumna();
-        return $this->db->query("SELECT *	
+        return $this->db->query("SELECT *   
                                     FROM movies m INNER JOIN relacion_movie_list rml  
                                                  ON (m.id=rml.id_movie)
                                                     WHERE rml.id_list='$id_list' 
@@ -26,12 +26,10 @@ class DB {
     }
 
     function obtenerMovie($id_movie, $id_list) {
-        $columna = getColumna();
         return $this->db->query("SELECT *
-									FROM movies m 
-									INNER JOIN relacion_movie_list rml  ON (m.id=rml.id_movie)
-									WHERE (rml.id_list='$id_list' AND m.id='$id_movie')
-									ORDER BY ".$columna." ".getOrder($columna))->fetchAll();
+                                    FROM movies m 
+                                    INNER JOIN relacion_movie_list rml  ON (m.id=rml.id_movie)
+                                    WHERE (rml.id_list='$id_list' AND m.id='$id_movie')")->fetchAll();
     }
 
     function obtenerLists() {
@@ -60,9 +58,9 @@ class DB {
         $this->db->exec("INSERT INTO movies 
                             VALUES (null,'$name', '$director', '$rating', '$link', '$year');");
         $id_movie = $this->db->query("SELECT id
-										FROM movies 
-										ORDER BY id DESC
-										LIMIT 1;")->fetch();
+                                        FROM movies 
+                                        ORDER BY id DESC
+                                        LIMIT 1;")->fetch();
 
         return $this->db->exec("INSERT INTO relacion_movie_list
                                      VALUES  ('$id_movie[0]','$id_list','$seen'); ");
@@ -72,9 +70,9 @@ class DB {
     function agregarList() {
          $this->db->exec("INSERT INTO list VALUES (null,'prueba');");
          return $this->db->query("SELECT id
-										FROM list 
-										ORDER BY id DESC
-										LIMIT 1;")->fetch()[0];
+                                        FROM list 
+                                        ORDER BY id DESC
+                                        LIMIT 1;")->fetch()[0];
     }
 
     function agregarMovieInList($id_movie, $id_list) {
@@ -93,6 +91,11 @@ class DB {
     function existeLista($id_list) {
         return $this->db->query("SELECT COUNT(*) FROM list WHERE list.id='$id_list' LIMIT 1;")->fetchColumn();
       
+    }
+    
+    function editarMovie($id, $director, $name,$year,$rating) {
+      
+        return $this->db->exec("UPDATE movies SET director='$director', name='$name',year=$year,rating=$rating  WHERE id='$id';");
     }
  
 

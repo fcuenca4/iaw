@@ -137,10 +137,11 @@
                                         <i class="mdi-action-delete"></i>
                                     </a>
                         
-                      <!-- EDITAR PELICULA -->
-						<a onclick="modificarPelicula(<?php echo $movie["id"]; ?>, <?php echo $id_list; ?>)" class='click'>
-                            <i class="mdi-action-edit"></i>
-                        </a>
+                       <!-- EDITAR PELICULA -->
+                        
+                         <a onclick="editarPelicula('<?php echo $movie['editUrl']?>', '<?php echo $movie['id'];?>')" class='click'>
+                                <i class="material-icons">editar</i>
+                         </a>
 
                     </div>
                 </li>
@@ -176,6 +177,16 @@
             </div>
         </div>
          <!-- ORDENAR END-->
+    
+
+
+
+
+
+
+
+
+
          
     <!--FOOTER -->
 	<footer class="page-footer">           
