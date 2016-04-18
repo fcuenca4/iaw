@@ -1,0 +1,61 @@
+
+<div class="modal" id="modalCuenca">
+        <form action="action_editar.php" method="POST" class="col s12">
+            <div class="modal-header"> 
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-content">
+				<input type='hidden' id='id_list' name='id_list' value="<?php echo $movie['id_list']; ?>" />
+				<input type='hidden' id='id_movie' name='id_movie' value="<?php echo $movie['0']; ?>" />
+				
+				<div class="row">
+                    <div class="input-field col s6">
+						<i class="material-icons prefix"></i>
+                        <input id="name" name="name" type="text" value="<?php echo  $movie['name'] ?>" >
+                        <label for="name" class="active">Nombre</label>
+                    </div>
+                    <div class="input-field col s6">
+						<i class="material-icons prefix"></i>
+                        <input id="director" name="director" type="text" value="<?php echo  $movie['director'] ?>" >
+                        <label for="director" class="active">Director</label>
+                    </div>
+                </div>
+
+				<div class="row">
+                    <div class="input-field col s12">
+						<i class="material-icons prefix"></i>
+                        <input type='text' id='rating' name="rating" value="<?php echo  $movie['rating'] ?>"  />
+                        <label for="rating" class="active">Rating</label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+						<i class="material-icons prefix"></i>
+                        <input type='text' id='link' name='link' value="<?php echo  $movie['link'] ?>" />
+                        <label for="link" class="active">Link</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+						<i class="material-icons prefix"></i>
+                        <input type='text' id='year' name='year' value="<?php echo  $movie['year'] ?>" />
+                        <label for="year" class="active" >Year</label>
+                    </div>
+                </div>
+			
+			</div>
+			<div class="modal-footer">
+				<button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Cancelar
+                    <i class="mdi-content-cancel right"><a href="./index.php?list=$id_lista"></i>
+                </button>
+                <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Guardar
+                    <i class="mdi-content-send right"></i>
+                </button>
+            </div>
+            
+        </form> 
+
+</div>
+
+

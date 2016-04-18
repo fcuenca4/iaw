@@ -23,3 +23,16 @@ function actualizarListado(responseXML) {
 
 }
 
+function editarPelicula(url, id) {
+    $('#modalCuenca').openModal();
+    $.ajax({
+        url: url,
+        context: document.body,
+        success: function (data) {
+           console.log(data)
+        },
+        error: function(data){
+          console.log( data);  
+        }
+    });
+}

@@ -17,11 +17,11 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/seen.js"></script>
-	<!--<script type="text/javascript" src="js/borrar.js"></script>-->
     <script type="text/javascript" src="js/app.js"></script>
 
     <?php 
         $id_list =getListByUrl();
+        
     ?>
     
 
@@ -88,7 +88,7 @@
         </form>
     </div>
     <!-- Modal END -->
-
+    
     <!--START CONTAINER-->
    <div class="container">
         
@@ -114,7 +114,8 @@
                     </br>
                     </p>
                     <div class="secondary-content">
-                        <a href="<?php echo $movie['link']  ?>">
+                        <a href="http://<?php echo $movie['link']  ?>">
+                            
                             <i class="material-icons">call_made </i>
                         </a>
                         <?php 
@@ -137,11 +138,12 @@
                                         <i class="mdi-action-delete"></i>
                                     </a>
                         
-                       <!-- EDITAR PELICULA -->
-                        
-                         <a onclick="editarPelicula('<?php echo $movie['editUrl']?>', '<?php echo $movie['id'];?>')" class='click'>
-                                <i class="material-icons">editar</i>
+                      <!-- EDITAR PELICULA -->
+						
+						 <a onclick="editarPelicula('<?php echo $movie['editUrl']?>', '<?php echo $movie['id'];?>')" class='click'>
+                                <i class="material-icons ">editar</i>
                          </a>
+									
 
                     </div>
                 </li>
@@ -177,16 +179,6 @@
             </div>
         </div>
          <!-- ORDENAR END-->
-    
-
-
-
-
-
-
-
-
-
          
     <!--FOOTER -->
 	<footer class="page-footer">           
@@ -199,8 +191,72 @@
     </footer>   
 
 
+<div class="modal" id="modalCuenca">
+        <form action="action_editar.php" method="POST" class="col s12">
+
+            <div class="modal-content">
+				<input type='hidden' id='id_list' name='id_list' value="<?php echo $id_list; ?>" />
+				<input type='hidden' id='id_movie' name='id_movie' value="<?php echo $movie['id']; ?>" />
+				
+				<div class="row">
+                    <div class="input-field col s6">
+						<i class="material-icons prefix"></i>
+                        <input id="name" name="name" type="text" value="name" class="validate">
+                        <label for="name" class="active">Nombre</label>
+                    </div>
+                    <div class="input-field col s6">
+						<i class="material-icons prefix"></i>
+                        <input id="director" name="director" type="text" value="director" class="validate" >
+                        <label for="director" class="active">Director</label>
+                    </div>
+                </div>
+
+				<div class="row">
+                    <div class="input-field col s12">
+						<i class="material-icons prefix"></i>
+                        <input type='text' id='rating' name="rating"  value="rating" class="validate" />
+                        <label for="rating" class="active">Rating</label>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+						<i class="material-icons prefix"></i>
+                        <input type='text' id='link' name='link'value="link" class="validate"  />
+                        <label for="link" class="active">Link</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+						<i class="material-icons prefix"></i>
+                        <input type='text' id='year' name='year' value="year" class="validate"  />
+                        <label for="year" class="active" >Year</label>
+                    </div>
+                </div>
+			
+			</div>
+			<div class="modal-footer">
+				<button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Cancelar
+                    <i class="mdi-content-cancel right"><a href="./index.php?list=$id_lista"></i>
+                </button>
+                <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Guardar
+                    <i class="mdi-content-send right"></i>
+                </button>
+            </div>
+            
+        </form> 
+
+</div>
+
+
+
+
+
+
+
 
 </body>
 
 
 </html>
+
