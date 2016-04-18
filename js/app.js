@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $('.modal-trigger').leanModal();
 });
 function borrarCollection(url) {
@@ -13,26 +13,35 @@ function borrarCollection(url) {
 
 function actualizarListado(responseXML) {
     if ($("eliminado", responseXML).text() === "1") {
-        $("#"+(
+        $("#" + (
             $("id", responseXML).text())
-            ).remove();        
+        ).remove();
     } else {
         window.alert("Error: no se pudo eliminar a ");
     }
-    
+
 
 }
 
-function editarPelicula(url, id) {
+function editarPelicula(url, idMovie,idList) {
     $('#modalCuenca').openModal();
+
     $.ajax({
-        url: url,
-        context: document.body,
-        success: function (data) {
-           console.log(data)
-        },
-        error: function(data){
-          console.log( data);  
+        method: "GET",
+        url: "obtenerPelicula.php",
+        dataType: "json",
+        data: {
+            idMovie: idMovie,
+            idList: idList
         }
-    });
+    })
+        .done(function (msg) {
+
+            $('#modalCuencaName').val(msg.name);
+            $('#modalCuencaRating').val(msg.rating);
+            $('#modalCuencaDirector').val(msg.director);
+            $('#modalCuencaLink').val(msg.link);
+            $('#modalCuencaYear').val(msg.year);
+            console.log(msg);
+        });
 }

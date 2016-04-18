@@ -140,7 +140,7 @@
                         
                       <!-- EDITAR PELICULA -->
 						
-						 <a onclick="editarPelicula('<?php echo $movie['editUrl']?>', '<?php echo $movie['id'];?>')" class='click'>
+						 <a onclick="editarPelicula('<?php echo $movie['editUrl']?>', '<?php echo $movie['id'];?>','<?php echo $id_list;?>')" class='click'>
                                 <i class="material-icons ">editar</i>
                          </a>
 									
@@ -156,7 +156,6 @@
          
     </div>
     <!--CONTAINER END-->
-
 
     <!--START ORDENAR-->
    <div class="row">
@@ -201,12 +200,12 @@
 				<div class="row">
                     <div class="input-field col s6">
 						<i class="material-icons prefix"></i>
-                        <input id="name" name="name" type="text" value="name" class="validate">
+                        <input id="modalCuencaName" name="name" type="text" value="name" class="validate">
                         <label for="name" class="active">Nombre</label>
                     </div>
                     <div class="input-field col s6">
 						<i class="material-icons prefix"></i>
-                        <input id="director" name="director" type="text" value="director" class="validate" >
+                        <input id="modalCuencaDirector" name="director" type="text" value="director" class="validate" >
                         <label for="director" class="active">Director</label>
                     </div>
                 </div>
@@ -214,7 +213,7 @@
 				<div class="row">
                     <div class="input-field col s12">
 						<i class="material-icons prefix"></i>
-                        <input type='text' id='rating' name="rating"  value="rating" class="validate" />
+                        <input type='text' id='modalCuencaRating' name="rating"  value="rating" class="validate" />
                         <label for="rating" class="active">Rating</label>
                     </div>
                 </div>
@@ -222,14 +221,14 @@
                 <div class="row">
                     <div class="input-field col s12">
 						<i class="material-icons prefix"></i>
-                        <input type='text' id='link' name='link'value="link" class="validate"  />
+                        <input type='text' id='modalCuencaLink' name='link'value="link" class="validate"  />
                         <label for="link" class="active">Link</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
 						<i class="material-icons prefix"></i>
-                        <input type='text' id='year' name='year' value="year" class="validate"  />
+                        <input type='text' id='modalCuencaYear' name='year' value="year" class="validate"  />
                         <label for="year" class="active" >Year</label>
                     </div>
                 </div>
