@@ -51,8 +51,9 @@ function getMovies($id_list) {
         if (!file_exists($file)) $file = './avatar/no.jpg';
         $deleteUrl = './borrarPelicula.php?idMovie='.$movie[0].'&idList='.$id_list;
 		$editUrl =  './obtenerPelicula.php?idMovie=' . $movie[0] .'&idList='.$id_list;
+		$uploadUrl = './subir.php?idMovie=' . $movie[0] .'&idList='.$id_list;
         array_push($result,
-        array('id' => $movie[0], 'name' => $movie[1], 'director' => $movie[2], 'rating' => $movie[3], 'link' => $movie[4], 'seen' => $aux, 'year' => $movie[5], 'avatar' => $file, 'deleteUrl' => $deleteUrl, 'editUrl'=>$editUrl ));
+        array('id' => $movie[0], 'name' => $movie[1], 'director' => $movie[2], 'rating' => $movie[3], 'link' => $movie[4], 'seen' => $aux, 'year' => $movie[5], 'avatar' => $file, 'deleteUrl' => $deleteUrl, 'editUrl'=>$editUrl, 'uploadUrl'=>$uploadUrl ));
     }
     return $result;
 }

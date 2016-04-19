@@ -7,7 +7,7 @@ function setSeen(element,idList, idMovie, seen) {
     });
 
     if (seen) {
-        $(element).parent().parent().css('background-color', 'yellow')
+        $(element).parent().parent().css('background-color', 'orange')
     } else {
         $(element).parent().parent().css('background-color', 'white')
     }

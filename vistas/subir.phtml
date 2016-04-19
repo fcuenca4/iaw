@@ -1,0 +1,40 @@
+   <!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Contactos - Subir Foto</title>
+
+    <link href="css/estilo.css" type="text/css" rel="stylesheet">
+    <link href="css/materialize.min.css" type="text/css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.png" />
+
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>        
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</head>
+    
+    <body>
+    <div class="row">
+        <div class="section">
+            <div class="col s8 offset-s2">
+                <form action='subirArchivo.php' method='post' enctype="multipart/form-data" class="col s8 offset-s2">
+                    <div class="file-field input-field">
+                        <input type="hidden" name="idMovie" value="<?php echo $_GET['idMovie']; ?>" />
+						<input type="hidden" name="idList" value="<?php echo $_GET['idList']; ?>" />
+                        <input class="file-path validate" type="text"/>
+                        <div class="btn orange darken-4">
+                            <span>Foto</span>
+                            <input name="file" type="file" id="file" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn waves-effect orange darken-4" type="submit" name="submit" >
+                            Grabar <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>

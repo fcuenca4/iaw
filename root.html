@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<body >
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
@@ -27,18 +27,19 @@
 
     <!--START NAV-->
     <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo right">My Movies</a>
+        <div class="nav-wrapper blue-grey darken-4">
+			 <i class="material-icons right " style="color: #ffff8d; font-size:60pt"  >theaters </i>
+            <a href="#" class="brand-logo center" style="font-family: Fantasy">My Movies</a>
+			 <i class="material-icons left " style="color: #ffff8d; font-size:60pt"  >theaters </i>
+			 
+			
             <ul id="nav-mobile" class="right hide-on-med-and-down">
             </ul>
         </div>
     </nav>
     <!--FINISH NAV-->
 
-    <!-- Modal Trigger -->
-    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a class="btn-floating btn-large waves-effect waves-light red btn modal-trigger" href="#modal"><i class="mdi-content-add"></i></a>
-    </div>
+   
 
     <!-- Modal Structure -->
     <div id="modal" class="modal">
@@ -81,16 +82,18 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Guardar
+                <button class="btn waves-effect waves-light modal-action modal-close orange darken-4" type="submit" name="action">Guardar
                     <i class="mdi-content-send right"></i>
                 </button>
+				
+				
             </div>
         </form>
     </div>
     <!-- Modal END -->
     
     <!--START CONTAINER-->
-   <div class="container">
+   <div class="container" >
         
         <div class="row" <div class="col s6">
              <ul class="collection">
@@ -98,7 +101,7 @@
                         
                        if($movie["seen"] == 1) {?>
                       
-                    <li class="collection-item avatar" style="background-color: yellow" id= "<?php echo $movie['id']  ?>" > 
+                    <li class="collection-item avatar" style="background-color: orange" id= "<?php echo $movie['id']  ?>" > 
                         <?php 
                         } else { 
                         ?>
@@ -114,36 +117,44 @@
                     </br>
                     </p>
                     <div class="secondary-content">
-                        <a href="http://<?php echo $movie['link']  ?>">
-                            
-                            <i class="material-icons">call_made </i>
-                        </a>
+                        
                         <?php 
                                    switch($movie['seen']){
                                    case 0:?> 
                         <a class="change-color" onclick="setSeen(this,<?php echo $id_list ?>,<?php echo $movie["id"] ?>, 1)">
-                            <i class="material-icons">done  </i>
+                            <i class="material-icons" style="color: black; font-size:20pt">done  </i>
                         </a>
                         <?php break;
                                    case 1:?>
                         <a class="change-color" onclick="setSeen(this,<?php echo $id_list ?>,<?php echo $movie["id"] ?>, 0)">
-                            <i class="material-icons">done
+                            <i class="material-icons" style="color: black; font-size:20pt">done
                                             </i>
                         </a>
                         <?php break;
                                   }?>
   
+                        <a href="<?php echo $movie['link']; ?>" class='click'>
+                                       <i class="material-icons" style="color: black; font-size:20pt">call_made</i>
+                                    </a>
+                      
                        <!-- BORRAR PELICULA -->
                         <a onclick="borrarCollection('<?php echo $movie['deleteUrl']; ?>')" class='click'>
-                                        <i class="mdi-action-delete"></i>
+                                        <i class="mdi-action-delete" style="color: black; font-size:20pt"></i>
                                     </a>
-                        
+                           <!-- SUBIR IMAGEN -->
+					   
+					   <?php if ($movie['uploadUrl']!=null) { ?>
+                                    <a href=<?php echo $movie['uploadUrl']; ?> >
+                                        <i class="mdi-file-file-upload" style="color: black; font-size:20pt"></i>
+                                    </a>
+                       <?php } ?>
                       <!-- EDITAR PELICULA -->
 						
-						 <a onclick="editarPelicula('<?php echo $movie['editUrl']?>', '<?php echo $movie['id'];?>','<?php echo $id_list;?>')" class='click'>
-                                <i class="material-icons ">editar</i>
+						 <a onclick="editarPelicula('<?php echo $movie['editUrl']?>', '<?php echo $movie['id'];?>','<?php echo $id_list;?>')" class='click'   >
+                                <i class="material-icons " style="color: black; font-size:20pt">editar</i>
                          </a>
-									
+						 
+					
 
                     </div>
                 </li>
@@ -158,38 +169,52 @@
     <!--CONTAINER END-->
 
     <!--START ORDENAR-->
-   <div class="row">
-            <div class="section">
-                <div class="col right">
-                    <a class='dropdown-button btn' href='#' data-activates='ordenar'>Ordenar</a>
-
-                    <ul id='ordenar' class='dropdown-content'>
-                        <?php foreach (getColumnas() as $columna) { ?>
-                            <li>
-                                <?php if ($columna!=null) { ?>
-                                    <a href=<?php echo $columna['OrdenUrl']; ?>>
-                                        <?php echo $columna['nombre']; ?>
-                                    </a>
-                                <?php } ?>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-            </div>
-        </div>
-         <!-- ORDENAR END-->
+	<?php if (getMovies($id_list) != null) { ?>
+		<div class="row">
+			<div class="section">
+				<div class="center">
+					<a class='dropdown-button btn orange darken-4' href='#' data-activates='ordenar'>Ordenar</a>
+						<ul id='ordenar' class='dropdown-content '>
+						<?php foreach (getColumnas() as $columna) { ?>
+							<li>
+								<?php if ($columna!=null) { ?>
+									<a href=<?php echo $columna['OrdenUrl']; ?> style="color: black">
+										<?php echo $columna['nombre']; ?> 
+									</a>
+								<?php } ?>
+							</li>
+						<?php } ?>
+					</ul>
+				</div>
+			</div>
+		</div>
+	<?php } ?>
+	<!-- ORDENAR END-->
          
     <!--FOOTER -->
-	<footer class="page-footer">           
+	<footer class="page-footer blue-grey darken-4" > 
+		  
+		
+		  <!-- Modal Trigger -->
+			<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+				<a class="btn-floating btn-large modal-trigger waves-effect right waves-circle lighten-2 orange darken-4 tooltipped" data-target="modal" data-position="left" data-delay="50" data-tooltip="Agregar Movie"><i class="mdi-content-add"></i></a>
+			</div>
+			
+			<!-- Modal Trigger -->
+            <div  class="fixed-action-btn" style="bottom: 45px; right: 85px;">
+            <a class="btn-floating btn-large modal-trigger waves-effect right waves-circle lighten-2 orange darken-3 tooltipped" data-target="modal1" data-delay="50" data-tooltip="Compartir"><i class="material-icons">open_in_new</i></a>
+            </div>
+            
+	
           <div class="footer-copyright">
             <div class="container">
-             2016 Comision: Cuenca - Garat
+             � 2016 Comision: Cuenca - Garat
             <a class="grey-text text-lighten-4 right" href="#!">Ingenieria de Aplicaciones Web</a>
             </div>
           </div>
     </footer>   
 
-
+<!-- Structure modal formulario edicion -->
 <div class="modal" id="modalCuenca">
         <form action="action_editar.php" method="POST" class="col s12">
 
@@ -235,17 +260,30 @@
 			
 			</div>
 			<div class="modal-footer">
-				<button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Cancelar
-                    <i class="mdi-content-cancel right"><a href="./index.php?list=$id_lista"></i>
-                </button>
-                <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Guardar
+				
+                <button class="btn waves-effect waves-light modal-action modal-close orange darken-4 " type="submit" name="action">Guardar
                     <i class="mdi-content-send right"></i>
+                </button>
+				
+				<button class="btn waves-effect waves-light modal-action modal-close orange darken-4 left" type="submit" name="action">Cancelar
+                    <i class="mdi-content-cancel right"><a href="./index.php?list=$id_lista"></i>
                 </button>
             </div>
             
         </form> 
 
 </div>
+
+<!-- Structure modal compartir lista -->
+    <div id="modal1" class="modal">
+        <div class="modal-content" >
+            <h4 style="font-family: Fantasy; color:#ff6d00 " >Compartir MyMovies</h4>
+            <p style="color:black ">/index.php?list=<?php echo $id_list; ?></p>
+        </div>
+		<div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
 
 
 
